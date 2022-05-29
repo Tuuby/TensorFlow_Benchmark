@@ -2,7 +2,7 @@ import math
 import json
 
 length = 50
-matrix_size = 400
+matrix_size = 2500
 
 matrices = []
 for i in range(length):

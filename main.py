@@ -20,7 +20,7 @@ json_size = len(json_object)
 matrices = []
 
 for i in range(json_size):
-    matrix = tf.constant(json_object[i], shape=[20, 20])
+    matrix = tf.constant(json_object[i], shape=[50, 50])
     matrices.append(matrix)
 
 matrix_count = len(matrices)
