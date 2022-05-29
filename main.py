@@ -46,7 +46,7 @@ for i in range(iteration_count):
 mean = statistics.mean(times)
 print(f"[Complete] {iteration_count} benchmarks finished.\nIdividual times in seconds: {times} | mean: {mean} seconds")
 
-with open(f"results_{config.benchmark_params['benchmark_label']}.csv", "w", newline="\n") as file:
+with open(f"results_{config.benchmark_params['benchmark_label']}_op{operations}_d{matrix_dimension}.csv", "w", newline="\n") as file:
     writer = csv.writer(file)
     writer.writerow(["sep=,"])
     for i in range(iteration_count):
