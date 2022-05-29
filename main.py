@@ -4,10 +4,12 @@ import time
 import json
 import tensorflow as tf
 import csv
+import config
 
 # Define Benchmark variables
-operations = 100000
-iteration_count = 10
+operations = config.benchmark_params['operations_count']
+iteration_count = config.benchmark_params['iteration_count']
+matrix_dimension = config.benchmark_params['matrix_dimension']
 
 # Start preparing benchmark data
 print("TensorFlow version: ", tf.__version__)
@@ -20,7 +22,7 @@ json_size = len(json_object)
 matrices = []
 
 for i in range(json_size):
-    matrix = tf.constant(json_object[i], shape=[50, 50])
+    matrix = tf.constant(json_object[i], shape=[matrix_dimension, matrix_dimension])
     matrices.append(matrix)
 
 matrix_count = len(matrices)
@@ -44,7 +46,7 @@ for i in range(iteration_count):
 mean = statistics.mean(times)
 print(f"[Complete] {iteration_count} benchmarks finished.\nIdividual times in seconds: {times} | mean: {mean} seconds")
 
-with open("results.csv", "w", newline="\n") as file:
+with open(f"results_{config.benchmark_params['benchmark_label']}.csv", "w", newline="\n") as file:
     writer = csv.writer(file)
     writer.writerow(["sep=,"])
     for i in range(iteration_count):
