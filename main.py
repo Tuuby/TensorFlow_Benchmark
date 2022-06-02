@@ -6,6 +6,9 @@ import tensorflow as tf
 import csv
 import config
 
+# Uncomment to run on CPU
+tf.config.experimental.set_visible_devices([], 'GPU')
+
 # Define Benchmark variables
 operations = config.benchmark_params['operations_count']
 iteration_count = config.benchmark_params['iteration_count']
